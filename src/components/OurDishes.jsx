@@ -1,8 +1,12 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import styled from 'styled-components'
 import { Dishes } from '../data/HomelyData'
+import { HomelyContext } from '../context/Context'
 
 const OurDishes = () => {
+
+  const { addToCart } = useContext(HomelyContext)
+
   return (
     <>
       <Wrapper id='our-dishes'>
@@ -13,13 +17,15 @@ const OurDishes = () => {
         <div className='homely-dishes'>
           {Dishes.map((dish) => (
             <div key={dish.id} className='dish-details'>
-              <img src={dish.img} alt='Homely-meals' />
+              <img src={dish.foodImg} alt='Homely-meals' />
               <h1>{dish.foodName}</h1>
               <div className='homely-price'>
                 <p>#{dish.price}.00</p>
                 <div>
-                  <input type='number' />
-                  <button>+ Add</button>
+                  <button className={dish.inCart ? 'in-cart' : 'add-to-cart'} disabled={dish.inCart ? true : false}
+                  onClick={()=>addToCart(dish)}>
+                    {dish.inCart ? 'In Cart' : '+ Add'}
+                  </button>
                 </div>
               </div>
             </div>
@@ -75,11 +81,6 @@ const Wrapper = styled.section`
     font-size: 24px;
     font-weight: 500;
   }
-  input {
-    width: 45px;
-    height: 25px;
-    border: 1px solid #ff4d00;
-  }
   button {
     border: none;
     background-color: #ff4d00;
@@ -89,6 +90,12 @@ const Wrapper = styled.section`
     font-size: 18px;
     font-weight: lighter;
     cursor: pointer;
+  }
+  .in-cart{
+    color: #000;
+    background-color: #fff;
+    border: 1px solid #ff4d00;
+    cursor: auto;
   }
   @media screen and (max-width: 1200px) {
     .dish-details {

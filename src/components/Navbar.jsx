@@ -8,7 +8,7 @@ import { Link } from 'react-scroll'
 import { NavLink } from 'react-router-dom'
 
 const Navbar = () => {
-  const { active, setActive, closeNav } = useContext(HomelyContext)
+  const { active, setActive, closeNav, cartItems } = useContext(HomelyContext)
   return (
     <>
       <Wrapper>
@@ -21,17 +21,9 @@ const Navbar = () => {
             </div>
             <ul className='nav-links'>
               <li>
-                <Link
-                  to='hero'
-                  spy={true}
-                  smooth={true}
-                  offset={-100}
-                  duration={500}
-                >
-                  {/* <NavLink  className='link' to='/'> */}
-                    Home
-                  {/* </NavLink > */}
-                </Link>
+                <NavLink to='/' className='link'>
+                  Home
+                </NavLink>
               </li>
               <li>
                 <Link
@@ -42,7 +34,7 @@ const Navbar = () => {
                   duration={500}
                 >
                   {/* <NavLink  className='link' to='/'> */}
-                    Why choose us
+                  Why choose us
                   {/* </NavLink > */}
                 </Link>
               </li>
@@ -55,7 +47,7 @@ const Navbar = () => {
                   duration={500}
                 >
                   {/* <NavLink  className='link' to='/'> */}
-                    Our dishes
+                  Our dishes
                   {/* </NavLink > */}
                 </Link>
               </li>
@@ -68,7 +60,7 @@ const Navbar = () => {
                   duration={500}
                 >
                   {/* <NavLink  className='link' to='/'> */}
-                    About us
+                  About us
                   {/* </NavLink > */}
                 </Link>
               </li>
@@ -81,15 +73,17 @@ const Navbar = () => {
                   duration={500}
                 >
                   {/* <NavLink className='link' to='/'> */}
-                    Testimonials
+                  Testimonials
                   {/* </NavLink> */}
                 </Link>
               </li>
-              <div to='/cart' className='cart'>
+              <NavLink to='/cart' className='cart'>
                 <PiShoppingCart />
                 <h3>Cart</h3>
-                <p className='cart-count'>0</p>
-              </div>
+                <p className='cart-count'>
+                  {cartItems.length === 0 ? '0' : cartItems.length}
+                </p>
+              </NavLink>
             </ul>
 
             {/* Mobile Navigation */}
@@ -97,9 +91,9 @@ const Navbar = () => {
               className={active ? 'mobile-nav nav-height' : 'mobile-nav'}
             >
               <div className='mobile'>
-                <div>
+                <NavLink to='/'>
                   <img src={logo} alt='Homely Logo' />
-                </div>
+                </NavLink>
                 <div className='nav-btn'>
                   <Hamburger
                     toggled={active}
@@ -124,7 +118,7 @@ const Navbar = () => {
                         onClick={closeNav}
                       >
                         {/* <NavLink className='link' to='/'> */}
-                          Home
+                        Home
                         {/* </NavLink> */}
                       </Link>
                     </li>
@@ -138,7 +132,7 @@ const Navbar = () => {
                         onClick={closeNav}
                       >
                         {/* <NavLink className='link' to='/'> */}
-                          Why choose us
+                        Why choose us
                         {/* </NavLink> */}
                       </Link>
                     </li>
@@ -152,7 +146,7 @@ const Navbar = () => {
                         onClick={closeNav}
                       >
                         {/* <NavLink className='link' to='/'> */}
-                          Our dishes
+                        Our dishes
                         {/* </NavLink> */}
                       </Link>
                     </li>
@@ -166,7 +160,7 @@ const Navbar = () => {
                         onClick={closeNav}
                       >
                         {/* <NavLink className='link' to='/'> */}
-                          About us
+                        About us
                         {/* </NavLink> */}
                       </Link>
                     </li>
@@ -180,14 +174,16 @@ const Navbar = () => {
                         onClick={closeNav}
                       >
                         {/* <NavLink className='link' to='/'> */}
-                          Testimonials
+                        Testimonials
                         {/* </NavLink> */}
                       </Link>
                     </li>
                     <NavLink to='/cart' className='cart' onClick={closeNav}>
                       <PiShoppingCart />
                       <h3>Cart</h3>
-                      <p className='cart-count'>0</p>
+                      <p className='cart-count'>
+                        {cartItems.length === 0 ? '0' : cartItems.length}
+                      </p>
                     </NavLink>
                   </ul>
                 )}
