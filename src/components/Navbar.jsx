@@ -92,7 +92,7 @@ const Navbar = () => {
             >
               <div className='mobile'>
                 <NavLink to='/'>
-                  <img src={logo} alt='Homely Logo' />
+                  <img src={logo} alt='Homely Logo' onClick={closeNav} />
                 </NavLink>
                 <div className='nav-btn'>
                   <Hamburger
@@ -109,18 +109,9 @@ const Navbar = () => {
                 {active && (
                   <ul className='mobile-link'>
                     <li>
-                      <Link
-                        to='hero'
-                        spy={true}
-                        smooth={true}
-                        offset={-100}
-                        duration={500}
-                        onClick={closeNav}
-                      >
-                        {/* <NavLink className='link' to='/'> */}
+                      <NavLink to='/' onClick={closeNav} className='link'>
                         Home
-                        {/* </NavLink> */}
-                      </Link>
+                      </NavLink>
                     </li>
                     <li onClick={closeNav}>
                       <Link

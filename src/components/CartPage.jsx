@@ -10,13 +10,9 @@ const CartPage = () => {
     <Wrapper>
       <div>
         <div>
-          {cartItems.length === 0 && <h1>No items are added in the cart</h1>}
+          {cartItems.length === 0 && <h1>No items are added to the cart</h1>}
         </div>
-        <div>
-          {cartItems.length >= 1 && (
-            <button onClick={clearCart}>Clear cart</button>
-          )}
-        </div>
+
         <div className='food-in-cart'>
           {cartItems.map((item) => (
             <div key={item.id} className='food-item'>
@@ -26,15 +22,23 @@ const CartPage = () => {
                 <div>
                   #{item.price}.00 x {item.quantity}
                 </div>
+                <h4 className='total-cost'>
+                  Total: {item.price * item.quantity}.00
+                </h4>
               </div>
-              <div>
+              <div className='btn'>
                 <button onClick={() => addToCart(item)}>+</button>
                 <button onClick={() => removeFromCart(item)}>-</button>
               </div>
             </div>
           ))}
         </div>
-        <h1>Total Price: #{totalPrice}.00</h1>
+        <h1>Grand Total: #{totalPrice}.00</h1>
+        <div className='clear-cart'>
+          {cartItems.length >= 1 && (
+            <button onClick={clearCart}>Clear cart</button>
+          )}
+        </div>
       </div>
     </Wrapper>
   )
@@ -68,6 +72,13 @@ const Wrapper = styled.section`
     font-size: 23px;
     font-weight: 500;
   }
+  .total-cost{
+    margin: 15px 0;
+    color: #ff4d00;
+  }
+  .btn{
+    flex-shrink: 0;
+  }
   button {
     margin: 0 10px;
     background: #fff;
@@ -85,6 +96,11 @@ const Wrapper = styled.section`
   h1 {
     text-align: center;
     font-size: 25px;
+  }
+  .clear-cart{
+    display: flex;
+    align-items: flex-end;
+    justify-content: right;
   }
   @media screen and (max-width: 1100px) {
     width: 85%;

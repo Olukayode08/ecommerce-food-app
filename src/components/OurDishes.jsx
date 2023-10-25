@@ -1,10 +1,9 @@
-import React, {useContext} from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { Dishes } from '../data/HomelyData'
 import { HomelyContext } from '../context/Context'
 
 const OurDishes = () => {
-
   const { addToCart } = useContext(HomelyContext)
 
   return (
@@ -22,10 +21,7 @@ const OurDishes = () => {
               <div className='homely-price'>
                 <p>#{dish.price}.00</p>
                 <div>
-                  <button className={dish.inCart ? 'in-cart' : 'add-to-cart'} disabled={dish.inCart ? true : false}
-                  onClick={()=>addToCart(dish)}>
-                    {dish.inCart ? 'In Cart' : '+ Add'}
-                  </button>
+                  <button onClick={() => addToCart(dish)}>+ Add</button>
                 </div>
               </div>
             </div>
@@ -90,12 +86,6 @@ const Wrapper = styled.section`
     font-size: 18px;
     font-weight: lighter;
     cursor: pointer;
-  }
-  .in-cart{
-    color: #000;
-    background-color: #fff;
-    border: 1px solid #ff4d00;
-    cursor: auto;
   }
   @media screen and (max-width: 1200px) {
     .dish-details {

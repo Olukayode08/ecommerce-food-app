@@ -10,6 +10,7 @@ const Context = ({ children }) => {
     setActive(false)
   }
 
+
   const addToCart = (food) => {
     // Checking if food exists
     const foodExist = cartItems.find((item) => item.id === food.id)
@@ -47,10 +48,10 @@ const Context = ({ children }) => {
     }
   }
 
-
-  const clearCart = ()=>{
+  const clearCart = () => {
     setCartItems([])
   }
+  
   const totalPrice = cartItems.reduce(
     (price, item) => price + item.quantity * item.price,
     0
