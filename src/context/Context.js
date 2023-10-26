@@ -6,6 +6,7 @@ const Context = ({ children }) => {
   const [active, setActive] = useState(false)
   const [cartItems, setCartItems] = useState([])
 
+
   const closeNav = () => {
     setActive(false)
   }

@@ -8,6 +8,7 @@ import DishFour from '../images/dish4.webp'
 import DishFive from '../images/dish5.webp'
 import DishSix from '../images/dish6.webp'
 
+
 export const AboutData = [
   {
     id: 1,

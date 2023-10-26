@@ -1,7 +1,20 @@
 import React from 'react'
 import styled from 'styled-components'
 import about from '../images/about-image.webp'
+import Swal from 'sweetalert2'
+import '../index.css'
+
 const AboutHomely = () => {
+  const moreAbout = () => {
+    <Alert>
+      {Swal.fire({
+        title: 'About us',
+        text: `I make delicious healthy meals for busy people who want to enjoy home made food without the hassle of cooking. Why would you cook when you don't have to? The Hot Plate makes it easy to eat your favorite home cooked food anywhere you want. You deserve to eat great food, whether you're at home or on the go. We'll help you find unique meals wherever you are. With our app, you never have to settle for unhealthy, expensive takeaway food again.`,
+        confirmButtonText: 'Cancel',
+      })}
+    </Alert>
+
+  }
   return (
     <>
       <Wrapper>
@@ -16,7 +29,7 @@ const AboutHomely = () => {
                 favorite home cooked food anywhere you want. You deserve to eat
                 great food, whether you're at home or on the go.
               </p>
-              <h3>See more</h3>
+              <h3 onClick={moreAbout}>See more</h3>
             </div>
             <div className='about-food'>
               <img src={about} alt='About-Homely' />
@@ -98,6 +111,12 @@ const Wrapper = styled.section`
     h2 {
       font-size: 30px;
     }
+  }
+`
+
+const Alert = styled.section`
+  .alert-text {
+    color: yellow;
   }
 `
 export default AboutHomely

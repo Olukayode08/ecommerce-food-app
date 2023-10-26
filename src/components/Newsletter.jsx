@@ -1,14 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import Swal from 'sweetalert2'
 
 const Newsletter = () => {
-    // Swal.fire({
-    //   title: 'Error!',
-    //   text: 'Do you want to continue',
-    //   icon: 'error',
-    //   confirmButtonText: 'Cool',
-    // })
+  const [email, setEmail] = useState('')
+
+  const submitEmail = (e) => {
+    e.preventDefault()
+    setEmail('')
+    Swal.fire({
+      title: 'Successful!',
+      text: 'Your email has been added to our list',
+      icon: 'success',
+      confirmButtonText: 'Ok',
+      timer: 2500,
+    })
+  }
   return (
     <>
       <Wrapper>
@@ -16,10 +23,19 @@ const Newsletter = () => {
           <div className='newsletter'>
             <h2>Subscribe to our Newsletter</h2>
             <p>Enter your Email address to get daily offers and news</p>
-            <div className='subscribe'>
-              <input type='text' required placeholder='Enter your Email' />
+            <form className='subscribe' onSubmit={submitEmail}>
+              <input
+                type='text'
+                name='email'
+                id='email'
+                value={email}
+                required
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder='Enter your Email'
+              />
               <button>Subscribe</button>
-            </div>
+              {/* <Swal /> */}
+            </form>
           </div>
         </section>
       </Wrapper>

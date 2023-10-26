@@ -20,8 +20,8 @@ const OurDishes = () => {
               <h1>{dish.foodName}</h1>
               <div className='homely-price'>
                 <p>#{dish.price}.00</p>
-                <div>
-                  <button onClick={() => addToCart(dish)}>+ Add</button>
+                <div onClick={() => addToCart(dish)}>
+                  <button>+ Add</button>
                 </div>
               </div>
             </div>
@@ -86,6 +86,11 @@ const Wrapper = styled.section`
     font-size: 18px;
     font-weight: lighter;
     cursor: pointer;
+  }
+  .in-cart {
+    background-color: #fff;
+    border: 1px solid #ff4d00;
+    color: #000;
   }
   @media screen and (max-width: 1200px) {
     .dish-details {

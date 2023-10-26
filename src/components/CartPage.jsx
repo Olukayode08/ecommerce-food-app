@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { HomelyContext } from '../context/Context'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 const CartPage = () => {
   const { cartItems, addToCart, removeFromCart, totalPrice, clearCart } =
@@ -34,9 +35,13 @@ const CartPage = () => {
           ))}
         </div>
         <h1>Grand Total: #{totalPrice}.00</h1>
+        <Link className='back-shopping' to='/'>
+          Back to shopping
+        </Link>
+
         <div className='clear-cart'>
           {cartItems.length >= 1 && (
-            <button onClick={clearCart}>Clear cart</button>
+            <h5 onClick={clearCart}>Clear cart</h5>
           )}
         </div>
       </div>
@@ -64,19 +69,20 @@ const Wrapper = styled.section`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: left;
     padding: 0 20px;
     font-size: 20px;
+    width: 70%;
   }
   .food-name {
     font-size: 23px;
     font-weight: 500;
   }
-  .total-cost{
+  .total-cost {
     margin: 15px 0;
     color: #ff4d00;
   }
-  .btn{
+  .btn {
     flex-shrink: 0;
   }
   button {
@@ -97,10 +103,41 @@ const Wrapper = styled.section`
     text-align: center;
     font-size: 25px;
   }
-  .clear-cart{
+  .back-shopping {
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid #ff4d00;
+    padding: 10px;
+    color: #000;
+    font-size: 20px;
+    width: 250px;
+    margin: auto;
     display: flex;
-    align-items: flex-end;
-    justify-content: right;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+  }
+  .back-shopping:hover {
+    color: #fff;
+    background: #ff4d00;
+    transition: all 0.3s ease-in;
+  }
+
+  h5 {
+    border: 1px solid #ff4d00;
+    padding: 10px 20px;
+    color: #000;
+    margin: 20px auto;
+    font-weight: 100;
+    font-size: 20px;
+    border-radius: 10px;
+    width: 150px;
+    text-align: center;
+  }
+  h5:hover {
+    color: #fff;
+    background: #ff4d00;
+    transition: all 0.3s ease-in;
   }
   @media screen and (max-width: 1100px) {
     width: 85%;
